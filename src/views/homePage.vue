@@ -7,7 +7,7 @@
           <img src="@/assets/icons/espacio-exterior.png" alt="Icono Galaxia" class="navbar-icon" />
 
           <h1>Espacio Alma 11</h1>
-          <div class="user-menu"></div>
+          
         </div>
       </nav>
   
@@ -91,7 +91,7 @@
   
   /* Navbar */
   .navbar {
-    background: linear-gradient(45deg, #03203d,#565fbb, #290a5c);
+    background: linear-gradient(45deg, #560c88,#565fbb, #290a5c, #a80fad);
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -104,8 +104,11 @@
   
   .navbar-content {
     display: flex;
-    align-items: center;
-    width: 100%;
+  align-items: center;
+  justify-content: center; /* Centra horizontalmente */
+  width: 100%; /* Ocupa todo el espacio horizontal */
+  position: relative; /* Permite posicionar otros elementos si es necesario */
+    
   }
   
   .navbar-icon {
@@ -114,12 +117,17 @@
     margin-right: 15px;
     border-radius: 50%;
     filter: invert(1) brightness(2);
+    position: absolute;
+  left: 20px; /* Ajusta la posición del icono al lado izquierdo */
+  
   }
   
   .navbar h1 {
     margin: 0;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
+
+    
   }
   
   /* Contenido principal */
@@ -132,7 +140,7 @@
   
 .sidebar {
   width: 13%; /* El sidebar ocupa el 20% */
-  background: linear-gradient(45deg, #03203d,#1f28a8, #03203d);
+  background: linear-gradient(45deg, #a80fad,#1f28a8, #03203d, #a80fad);
   color: white;
   display: flex;
   flex-direction: column;

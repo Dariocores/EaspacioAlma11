@@ -1,7 +1,7 @@
 <template>
     <div class="init-page">
       <div>
-        <h1>Bienvenidos a Espacio Alma 11</h1>
+        <h1>Bienvenidos!!</h1>
       </div>
       <div>
         <h3>
@@ -32,7 +32,7 @@
     width: 100%; /* Ancho total del viewport */
     height: 100%; /* Altura total del viewport */
     overflow: hidden; /* Evita que aparezca el scroll */
-    background: linear-gradient(45deg, #e91ab5, #011122, #6313af);
+    background: linear-gradient(45deg, #e91ab5, #052649, #3e0b6e, #a80fad);
   }
   
   /* Estilo para los textos */
