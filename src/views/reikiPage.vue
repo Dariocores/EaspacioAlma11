@@ -1,29 +1,92 @@
 <template>
-    <div class="init-page">
-      <!-- Aquí va el contenido de tu componente -->
-      <h1>Hola desde reikiPage</h1>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "ReikiPage",
-  };
-  </script>
-  
-  <style scoped>
-  .init-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
-    height: 100%; /* Ocupar todo el espacio disponible */
-    background: linear-gradient(45deg, #52568f, #011122,  #6313af);
-  }
+  <div class="init-page">
+    <h1>Reiki Usui</h1>
 
-  h1 {
-    color: rgb(255, 255, 255);;
-   
-  }
-  </style>
-  
+    <div class="images-container">
+      <img src="../assets/images/reiki01.jpg" alt="Reiki 1" />
+      <img src="../assets/images/reiki02.png" alt="Reiki 2" />
+    </div>
+
+    <h3>
+      El Reiki Usui es una técnica de sanación energética originada en Japón por
+      Mikao Usui. Se basa en canalizar la energía vital universal a través de
+      las manos del practicante hacia el receptor, promoviendo el equilibrio
+      físico, emocional, mental y espiritual. Esta práctica se fundamenta en
+      principios como la armonía, el respeto y la gratitud, y se utiliza para
+      aliviar el estrés, potenciar el bienestar y estimular la capacidad natural
+      del cuerpo para sanarse a sí mismo.
+    </h3>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "LimpiezasPage",
+};
+</script>
+
+<style scoped>
+/* Reset para evitar problemas de márgenes y paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden; /* Elimina el scroll horizontal */
+}
+
+.init-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(45deg, #bd10b4, #52568f, #0f3864, #bd10b4);
+  z-index: 1;
+}
+
+.init-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("@/assets/images/espacioalma.jpeg") center center / cover
+    no-repeat;
+  opacity: 0.1; /* Ajusta la opacidad para la marca de agua */
+  z-index: 0;
+}
+
+h1,
+h3,
+.images-container {
+  position: relative;
+  z-index: 2; /* Asegura que el contenido esté sobre la marca de agua */
+  margin: 2%;
+}
+
+.images-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px; /* Espacio entre imágenes */
+  margin-bottom: 30px; /* Espacio inferior entre imágenes y texto */
+  max-width: 100%; /* Evita que se desborde */
+  overflow-x: hidden;
+}
+
+.images-container img {
+  width: 300px; /* Tamaño ajustado */
+  height: 300px;
+  object-fit: cover; /* Ajusta la imagen sin deformar */
+  border-radius: 10px; /* Bordes redondeados para un mejor diseño */
+}
+</style>

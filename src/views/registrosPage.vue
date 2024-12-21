@@ -1,36 +1,27 @@
 <template>
   <div class="init-page">
-    <h1>Registros Akashicos</h1>
-    
+    <h1>Registros akashicos</h1>
+
     <div class="images-container">
-      <img src="../assets/images/registros01.jpg" alt="Limpieza 1">
-      <img src="../assets/images/registros02.jpg" alt="Limpieza 2">
+      <img src="../assets/images/registros01.jpg" alt="Registros 1" />
+      <img src="../assets/images/registros02.jpg" alt="Registros 2" />
     </div>
-    
-    <h2>¿Qué son los registros akáshicos?</h2>
-    <p>
-      Los registros akáshicos son una especie de "biblioteca energética" que contiene 
-      toda la información sobre las experiencias, emociones, pensamientos y aprendizajes 
-      de cada ser, a lo largo de todas sus vidas. Provienen del término sánscrito 
-      <strong>akasha</strong>, que significa éter o espacio.
-    </p>
-    <h3>¿Para qué sirven?</h3>
-    <ul>
-      <li>Comprender patrones repetitivos o bloqueos en sus vidas.</li>
-      <li>Obtener respuestas sobre su propósito o camino espiritual.</li>
-      <li>Sanar emociones o traumas del pasado.</li>
-      <li>Conectar con su esencia y avanzar en su desarrollo personal.</li>
-    </ul>
-    <p>
-      En esencia, permiten acceder a información para crecer y tomar decisiones 
-      más conscientes.
-    </p>
+
+    <h3>
+      Los registros akáshicos son un concepto espiritual que se refiere a un
+      archivo o biblioteca energética donde se almacena toda la información
+      sobre el pasado, presente y potencial futuro de cada alma. Según esta
+      creencia, son un plano etérico que contiene el conocimiento universal y
+      las experiencias de todos los seres vivos, y se pueden acceder a ellos a
+      través de técnicas meditativas o intuitivas para obtener guía y
+      comprensión sobre la vida y el propósito espiritual.
+    </h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LimpiezasPage",
+  name: "RegistrosPage",
 };
 </script>
 
@@ -42,33 +33,44 @@ export default {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   overflow-x: hidden; /* Elimina el scroll horizontal */
 }
 
 .init-page {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 100%; /* No excede el ancho del viewport */
-  min-height: 100vh; /* Ajusta para cubrir toda la ventana */
+  width: 100%;
+  min-height: 100vh;
   padding: 20px;
-  background: linear-gradient(45deg, #52568f, #011122, #6313af);
+  background: linear-gradient(45deg, #bd10b4, #52568f, #0f3864, #bd10b4);
+  z-index: 1;
 }
 
-h1 {
-  color: #ffffff;
-  margin-bottom: 20px; /* Espacio inferior reducido */
-  text-align: center;
+.init-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("@/assets/images/espacioalma.jpeg") center center / cover
+    no-repeat;
+  opacity: 0.1; /* Ajusta la opacidad para la marca de agua */
+  z-index: 0;
 }
 
-h3 {
-  color: #ffffff;
-  max-width: 800px; /* Limita el ancho del texto */
-  text-align: justify;
-  margin-top: 20px; /* Espacio superior entre texto e imágenes */
+h1,
+h3,
+.images-container {
+  position: relative;
+  z-index: 2; /* Asegura que el contenido esté sobre la marca de agua */
+  margin: 2%;
 }
 
 .images-container {
@@ -86,21 +88,5 @@ h3 {
   height: 300px;
   object-fit: cover; /* Ajusta la imagen sin deformar */
   border-radius: 10px; /* Bordes redondeados para un mejor diseño */
-}
-
-.akashic-records {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #ffffff;
-}
-.akashic-records h1 {
-  color: #ffffff;
-}
-.akashic-records ul {
-  margin: 0;
-  padding: 0 0 0 20px;
-}
-.akashic-records li {
-  margin-bottom: 8px;
 }
 </style>
