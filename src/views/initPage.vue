@@ -11,7 +11,7 @@
       [mencionar tu misión o propósito principal].
       <br /><br />
 
-      Te invitamos a explorar y descubrir todo lo que hemos preparado para ti.
+      Te invitamos a explorar y descubrir todo lo que hemos preparado para ti yes.
       ¡Gracias por visitarnos!
     </h3>
   </div>
