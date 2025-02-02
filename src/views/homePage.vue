@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div id="home-page">
     <!-- Navbar -->
     <nav class="navbar">
@@ -11,6 +11,16 @@
         />
 
         <h1>Espacio Alma 11</h1>
+
+         <!-- Íconos de redes sociales 1234567890 -->
+         <div class="social-icons">
+          <a href="https://wa.me/1173625683" target="_blank">
+            <img src="@/assets/icons/whatsapp.png" alt="WhatsApp" class="icon" />
+          </a>
+          <a href="https://instagram.com/espacioalma11" target="_blank">
+            <img src="@/assets/icons/instagram.png" alt="Instagram" class="icon" />
+          </a>
+        </div>
       </div>
     </nav>
 
@@ -106,35 +116,47 @@ export default {
   color: rgb(0, 0, 0);
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 60px;
   width: 100%;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar-title {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .navbar-content {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra horizontalmente */
   width: 100%; /* Ocupa todo el espacio horizontal */
-  position: relative; /* Permite posicionar otros elementos si es necesario */
-}
+  justify-content: space-between;
+  
+} 
 
 .navbar-icon {
   width: 40px;
   height: 40px;
-  margin-right: 15px;
   border-radius: 50%;
-  /* filter: invert(1) brightness(2); */
-  position: absolute;
-  left: 20px; /* Ajusta la posición del icono al lado izquierdo */
+   
 }
 
 .navbar h1 {
   margin: 0;
   font-size: 30px;
   font-weight: bold;
+}
+.social-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  
+  padding-right: 30px; /* Ajusta según sea necesario */
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 /* Contenido principal */
@@ -187,4 +209,4 @@ export default {
   background-color: #000000;
   overflow-y: auto;
 }
-</style>
+</style> 
