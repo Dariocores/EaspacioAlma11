@@ -64,6 +64,18 @@
         :show="showContact" 
         @close="showContact = false"
       />
+
+      <!-- Botones de redes sociales -->
+      <div class="social-buttons">
+        <a :href="whatsappLink" target="_blank" class="social-button whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <span class="tooltip">WhatsApp</span>
+        </a>
+        <a :href="instagramLink" target="_blank" class="social-button instagram">
+          <i class="fab fa-instagram"></i>
+          <span class="tooltip">Instagram</span>
+        </a>
+      </div>
     </div>
   </template>
   
@@ -95,7 +107,10 @@
       return {
         activeView: 'initPage',
         currentRoute: 'homePage',
-        showContact: false
+        showContact: false,
+        // Agrega aquí tus enlaces reales de WhatsApp e Instagram
+        whatsappLink: 'https://wa.me/+54TUNUMERO',
+        instagramLink: 'https://www.instagram.com/TUUSUARIO'
       };
     },
     methods: {
@@ -465,6 +480,81 @@
     .service-buttons {
       grid-template-columns: 1fr;
       gap: 0.7rem;
+    }
+  }
+
+  /* Estilos para botones de redes sociales */
+  .social-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1000;
+  }
+
+  .social-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .social-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  .social-button.whatsapp {
+    background: #25D366;
+  }
+
+  .social-button.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+
+  .social-button .tooltip {
+    position: absolute;
+    right: 70px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .social-button:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 768px) {
+    .social-buttons {
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .social-button {
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+    }
+
+    .social-button .tooltip {
+      display: none;
     }
   }
   </style>
