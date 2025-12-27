@@ -23,30 +23,39 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  /* Paleta pensada para sitio holístico: lavanda suave, teal calmante, y tonos crema/dorados */
+  --color-primary: #7e57c2; /* lavanda/índigo */
+  --color-accent: #4db6ac; /* teal suave */
+  --color-warm: #f3e5ab; /* dorado pálido / crema */
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --color-background: #fffafc; /* fondo crema muy suave */
+  --color-background-soft: #f8f4fb; /* superficies claras */
+  --color-background-mute: #f2ecf8; /* matiz para tarjetas */
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --color-border: rgba(126,87,194,0.12);
+  --color-border-hover: rgba(126,87,194,0.18);
 
-  --section-gap: 160px;
+  --color-heading: #2b1055; /* texto principal oscuro pero suave */
+  --color-text: #333333; /* texto legible */
+
+  --section-gap: 120px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    --color-primary: #9a7bd6;
+    --color-accent: #76c7b0;
+    --color-warm: #bfae7b;
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+    --color-background: #0f0b12;
+    --color-background-soft: #17121a;
+    --color-background-mute: #1f1724;
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-border: rgba(255,255,255,0.06);
+    --color-border-hover: rgba(255,255,255,0.08);
+
+    --color-heading: #f6f2fb;
+    --color-text: rgba(235,235,235,0.9);
   }
 }
 
@@ -70,17 +79,56 @@ body {
     Inter,
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    left: 100%;
     Roboto,
     Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 36px rgba(43,16,85,0.12);
+    transform: translateY(-6px) scale(1.01);
     'Droid Sans',
+.service-btn { transition: transform 0.28s cubic-bezier(.2,.8,.2,1), box-shadow 0.28s; }
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografía y jerarquía */
+h1 {
+  font-size: 2.2rem;
+  line-height: 1.05;
+  color: var(--color-heading);
+  margin-bottom: 0.6rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.2rem; }
+}
+
+/* Focus visible para accesibilidad */
+:focus-visible {
+  outline: 3px solid rgba(77,182,172,0.22);
+  outline-offset: 2px;
+}
+
+/* Botones y microinteracciones */
+.btn, button {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn:active, button:active {
+  transform: translateY(1px) scale(0.998);
+}
+
+.service-btn .service-icon {
+  font-size: 1.4rem;
 }

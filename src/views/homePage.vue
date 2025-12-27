@@ -1,6 +1,6 @@
 <template>
     <div id="home-page" class="friendly-home">
-      <nav class="navbar">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="navbar-content">
           <div class="navbar-left">
             <img src="@/assets/icons/espacio-exterior.png" alt="Icono Galaxia" class="navbar-icon" />
@@ -14,9 +14,22 @@
             <button class="nav-link" @click="goTo('reikiPage')">Reiki</button>
             <button class="contact-btn" @click="showContactForm">Contacto</button>
           </div>
-          <button class="menu-btn">&#9776;</button>
+          <button class="menu-btn" @click="toggleMenu" :aria-expanded="String(menuOpen)" aria-controls="mobile-menu" aria-label="Abrir menú">&#9776;</button>
         </div>
       </nav>
+
+      <!-- Menú móvil -->
+      <div v-if="menuOpen" id="mobile-menu" class="mobile-nav" @click.self="toggleMenu">
+        <div class="mobile-nav-inner">
+          <button class="mobile-close" @click="toggleMenu" aria-label="Cerrar menú">&times;</button>
+          <button class="mobile-link" @click="goTo('homePage')">Inicio</button>
+          <button class="mobile-link" @click="goTo('registrosPage')">Registros</button>
+          <button class="mobile-link" @click="goTo('tarotPage')">Tarot</button>
+          <button class="mobile-link" @click="goTo('limpiezaPage')">Limpieza</button>
+          <button class="mobile-link" @click="goTo('reikiPage')">Reiki</button>
+          <button class="mobile-contact" @click="showContactForm">Contacto</button>
+        </div>
+      </div>
 
       <!-- Bienvenida principal -->
       <div class="welcome-section">
@@ -108,8 +121,9 @@
         activeView: 'initPage',
         currentRoute: 'homePage',
         showContact: false,
-        // Agrega aquí tus enlaces reales de WhatsApp e Instagram
-        whatsappLink: 'https://wa.me/+54TUNUMERO',
+        menuOpen: false,
+        // Enlaces reales de WhatsApp e Instagram
+        whatsappLink: 'https://wa.me/2224447258',
         instagramLink: 'https://www.instagram.com/TUUSUARIO'
       };
     },
@@ -117,10 +131,15 @@
       goTo(page) {
         this.activeView = page;
         this.currentRoute = page;
+        this.menuOpen = false;
         this.$router.push({ name: page });
       },
       showContactForm() {
         this.showContact = true;
+      }
+      ,
+      toggleMenu() {
+        this.menuOpen = !this.menuOpen;
       }
     },
     computed: {
@@ -192,8 +211,8 @@
     z-index: 2;
   }
   .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--color-background-soft);
+    backdrop-filter: blur(6px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 0.5rem 1rem;
     position: fixed;
@@ -231,6 +250,9 @@
     gap: 1.5rem;
   }
 
+  .navbar .navbar-icon { width: 44px; height: 44px; transition: transform 0.18s ease; }
+  .navbar .navbar-icon:hover { transform: rotate(-6deg) scale(1.02); }
+
   .navbar-icon {
     width: 40px;
     height: 40px;
@@ -240,7 +262,7 @@
     background: none;
     border: none;
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text);
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0.5rem;
@@ -260,15 +282,18 @@
   }
 
   .nav-link:hover {
-    color: #7e57c2;
+    color: var(--color-primary);
   }
+
+  .nav-link { transition: color 0.16s ease, transform 0.12s; }
+  .nav-link:active { transform: translateY(1px); }
 
   .nav-link:hover::after {
     width: 100%;
   }
 
   .contact-btn {
-    background: #7e57c2;
+    background: var(--color-primary);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -279,8 +304,64 @@
   }
 
   .contact-btn:hover {
-    background: #5e35b1;
+    filter: brightness(0.95);
     transform: translateY(-2px);
+  }
+
+  .social-buttons { position: fixed; right: 1rem; bottom: 1rem; display: flex; flex-direction: column; gap: 0.6rem; z-index: 1100; }
+  .social-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--color-background-soft); color: var(--color-text); box-shadow: 0 6px 18px rgba(43,16,85,0.06); transition: transform 0.12s ease; }
+  .social-button:hover { transform: translateY(-4px) scale(1.03); color: var(--color-primary); }
+
+  /* Mobile menu styles */
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+  }
+
+  .mobile-nav-inner {
+    background: var(--color-background);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .mobile-link,
+  .mobile-contact {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 1.05rem;
+    text-align: left;
+    color: var(--color-text);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .mobile-link:hover {
+    background: rgba(0,0,0,0.03);
+    color: var(--color-primary);
+  }
+
+  .mobile-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text);
   }
 
   .menu-btn {
