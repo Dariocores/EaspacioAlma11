@@ -1,49 +1,122 @@
 <template>
-    <div class="init-page">
-      <!-- Aquí va el contenido de tu componente -->
-  <h1>Tarot</h1>
-  <p class="explicacion">El Tarot es una herramienta de autoconocimiento y guía espiritual. A través de sus cartas, puedes recibir orientación sobre tu presente, futuro y los desafíos que enfrentas.</p>
-  <button class="volver-btn" @click="$router.push({ name: 'homePage' })">Volver al inicio</button>
+  <div class="service-page-container">
+    <div class="content-card">
+      <h1>Lectura de Tarot</h1>
+      <div class="description">
+        <p>El Tarot es una poderosa herramienta de autoconocimiento y guía espiritual. No se trata solo de predecir, sino de comprender las energías que te rodean en el presente.</p>
+        <p>A través de sus arquetipos y símbolos, las cartas nos revelan perspectivas que a veces el ruido cotidiano no nos permite ver, brindándote claridad sobre tus decisiones y desafíos.</p>
+      </div>
+      <div class="focus">
+        <h3>¿En qué nos enfocamos?</h3>
+        <ul>
+          <li>Crecimiento y evolución personal</li>
+          <li>Claridad en la toma de decisiones</li>
+          <li>Comprensión de vínculos actuales</li>
+          <li>Identificación de obstáculos potenciales</li>
+        </ul>
+      </div>
+      <button class="action-btn" @click="$emit('open-contact')">Reservar Lectura</button>
+      <button class="volver-btn" @click="$router.push('/')">Volver al inicio</button>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "TarotPage",
-  };
-  </script>
-  
-  <style scoped>
-  .volver-btn {
-    margin-top: 2rem;
-    background: #7e57c2;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(126,87,194,0.08);
-    transition: background 0.2s;
-  }
-  .volver-btn:hover {
-    background: #5e35b1;
-  }
-    .init-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ffd700 0%, #b388ff 60%, #6a1b9a 100%);
-      /* dorado-morado misterio */
-    }
+  </div>
+</template>
 
-  h1 {
-    color: rgb(255, 255, 255);
-    
+<script>
+export default {
+  name: "TarotPage",
+};
+</script>
+
+<style scoped>
+.content-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem;
+  border-radius: 32px;
+  max-width: 800px;
+  width: 90%;
+  color: #333;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: #2b1055;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.focus {
+  text-align: left;
+  background: #f3f0f8;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.focus h3 {
+  margin-top: 0;
+  color: #7e57c2;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+.action-btn {
+  background: #7e57c2;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #5e35b1;
+  transform: scale(1.05);
+}
+
+.volver-btn {
+  background: transparent;
+  color: #7e57c2;
+  border: 2px solid #7e57c2;
+  padding: 0.9rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volver-btn:hover {
+  background: #f3f0f8;
+}
+
+@media (max-width: 600px) {
+  .content-card {
+    padding: 2rem 1.5rem;
   }
-  </style>
+  .action-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .volver-btn {
+    width: 100%;
+  }
+}
+</style>
+
   

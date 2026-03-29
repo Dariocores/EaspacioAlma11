@@ -1,49 +1,122 @@
 <template>
-    <div class="init-page">
-      <!-- Aquí va el contenido de tu componente -->
-  <h1>Reiki</h1>
-  <p class="explicacion">El Reiki es una técnica de sanación energética que utiliza la imposición de manos para equilibrar tu cuerpo, mente y espíritu, promoviendo la salud y el bienestar.</p>
-  <button class="volver-btn" @click="$router.push({ name: 'homePage' })">Volver al inicio</button>
+  <div class="service-page-container">
+    <div class="content-card">
+      <h1>Reiki</h1>
+      <div class="description">
+        <p>El Reiki es una técnica de sanación energética milenaria que utiliza la canalización de energía universal para equilibrar tu cuerpo, mente y espíritu.</p>
+        <p>A través de un contacto sutil, se armonizan los chakras y se libera la energía estancada, promoviendo una profunda sensación de paz y salud integral.</p>
+      </div>
+      <div class="benefits">
+        <h3>¿Qué experimentas?</h3>
+        <ul>
+          <li>Profunda relajación física</li>
+          <li>Liberación de tensiones acumuladas</li>
+          <li>Armonización de los centros energéticos</li>
+          <li>Fortalecimiento del sistema inmunológico</li>
+        </ul>
+      </div>
+      <button class="action-btn" @click="$emit('open-contact')">Reservar Sesión</button>
+      <button class="volver-btn" @click="$router.push('/')">Volver al inicio</button>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "ReikiPage",
-  };
-  </script>
-  
-  <style scoped>
-  .volver-btn {
-    margin-top: 2rem;
-    background: #7e57c2;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(126,87,194,0.08);
-    transition: background 0.2s;
-  }
-  .volver-btn:hover {
-    background: #5e35b1;
-  }
-    .init-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #f8bbd0 0%, #ce93d8 60%, #ba68c8 100%);
-      /* rosa-púrpura energía y paz */
-    }
+  </div>
+</template>
 
-  h1 {
-    color: rgb(255, 255, 255);;
-   
+<script>
+export default {
+  name: "ReikiPage",
+};
+</script>
+
+<style scoped>
+.content-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem;
+  border-radius: 32px;
+  max-width: 800px;
+  width: 90%;
+  color: #333;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: #2b1055;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.benefits {
+  text-align: left;
+  background: #f3f0f8;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.benefits h3 {
+  margin-top: 0;
+  color: #7e57c2;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+.action-btn {
+  background: #7e57c2;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #5e35b1;
+  transform: scale(1.05);
+}
+
+.volver-btn {
+  background: transparent;
+  color: #7e57c2;
+  border: 2px solid #7e57c2;
+  padding: 0.9rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volver-btn:hover {
+  background: #f3f0f8;
+}
+
+@media (max-width: 600px) {
+  .content-card {
+    padding: 2rem 1.5rem;
   }
-  </style>
+  .action-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .volver-btn {
+    width: 100%;
+  }
+}
+</style>
+
   
