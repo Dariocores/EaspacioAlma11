@@ -14,18 +14,22 @@
       :show="showContact" 
       @close="showContact = false"
     />
+
+    <FooterPage />
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
 import ContactForm from './components/ContactForm.vue'
+import FooterPage from './components/FooterPage.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    ContactForm
+    ContactForm,
+    FooterPage
   },
   data() {
     return {

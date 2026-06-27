@@ -34,11 +34,23 @@ export default {
 .content-card {
   background: var(--bg-card);
   padding: 3rem;
-  border-radius: 32px;
+  border-radius: var(--radius-xl);
   max-width: 800px;
   width: 90%;
   color: var(--text-dark);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: cardIn 0.5s ease-out;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1 {
@@ -86,17 +98,19 @@ li {
   cursor: pointer;
   margin-right: 1rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(126, 87, 194, 0.2);
 }
 
 .action-btn:hover {
   background: var(--primary-dark);
-  transform: scale(1.05);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(126, 87, 194, 0.3);
 }
 
 .volver-btn {
   background: transparent;
   color: var(--primary);
-  border: 2px solid #7e57c2;
+  border: 2px solid var(--primary);
   padding: 0.9rem 2rem;
   border-radius: 30px;
   font-weight: 600;
@@ -106,6 +120,7 @@ li {
 
 .volver-btn:hover {
   background: var(--primary-light);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
