@@ -1,21 +1,17 @@
 <template>
   <div class="service-page-container">
     <div class="content-card">
-      <h1>Reiki</h1>
+      <h1>{{ service.title }}</h1>
       <div class="description">
-        <p>El Reiki es una técnica de sanación energética milenaria que utiliza la canalización de energía universal para equilibrar tu cuerpo, mente y espíritu.</p>
-        <p>A través de un contacto sutil, se armonizan los chakras y se libera la energía estancada, promoviendo una profunda sensación de paz y salud integral.</p>
+        <p v-for="(p, i) in service.description" :key="i">{{ p }}</p>
       </div>
-      <div class="benefits">
-        <h3>¿Qué experimentas?</h3>
+      <div class="info-box">
+        <h3>{{ service.listTitle }}</h3>
         <ul>
-          <li>Profunda relajación física</li>
-          <li>Liberación de tensiones acumuladas</li>
-          <li>Armonización de los centros energéticos</li>
-          <li>Fortalecimiento del sistema inmunológico</li>
+          <li v-for="(item, i) in service.listItems" :key="i">{{ item }}</li>
         </ul>
       </div>
-      <button class="action-btn" @click="$emit('open-contact')">Reservar Sesión</button>
+      <button class="action-btn" @click="openContact">{{ service.cta }}</button>
       <button class="volver-btn" @click="$router.push('/')">Volver al inicio</button>
     </div>
   </div>
@@ -23,23 +19,30 @@
 
 <script>
 export default {
-  name: "ReikiPage",
-};
+  name: 'ServicePage',
+  inject: ['openContact'],
+  props: {
+    service: {
+      type: Object,
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped>
 .content-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card);
   padding: 3rem;
   border-radius: 32px;
   max-width: 800px;
   width: 90%;
-  color: #333;
+  color: var(--text-dark);
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 h1 {
-  color: #2b1055;
+  color: var(--primary-deep);
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
@@ -51,17 +54,17 @@ h1 {
   text-align: left;
 }
 
-.benefits {
+.info-box {
   text-align: left;
-  background: #f3f0f8;
+  background: var(--primary-light);
   padding: 1.5rem;
   border-radius: 16px;
   margin-bottom: 2rem;
 }
 
-.benefits h3 {
+.info-box h3 {
   margin-top: 0;
-  color: #7e57c2;
+  color: var(--primary);
 }
 
 ul {
@@ -73,7 +76,7 @@ li {
 }
 
 .action-btn {
-  background: #7e57c2;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -86,13 +89,13 @@ li {
 }
 
 .action-btn:hover {
-  background: #5e35b1;
+  background: var(--primary-dark);
   transform: scale(1.05);
 }
 
 .volver-btn {
   background: transparent;
-  color: #7e57c2;
+  color: var(--primary);
   border: 2px solid #7e57c2;
   padding: 0.9rem 2rem;
   border-radius: 30px;
@@ -102,7 +105,7 @@ li {
 }
 
 .volver-btn:hover {
-  background: #f3f0f8;
+  background: var(--primary-light);
 }
 
 @media (max-width: 600px) {
@@ -118,5 +121,3 @@ li {
   }
 }
 </style>
-
-  

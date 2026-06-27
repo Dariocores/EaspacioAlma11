@@ -2,32 +2,51 @@
   <div class="contact-form-overlay" v-if="show" @click.self="close">
     <div class="contact-form">
       <button class="close-btn" @click="close">&times;</button>
-      <h2>Contacto</h2>
-      <form @submit.prevent="handleSubmit">
-        <div class="form-group">
-          <label for="name">Nombre</label>
-          <input type="text" id="name" v-model="formData.name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" v-model="formData.email" required>
-        </div>
-        <div class="form-group">
-          <label for="service">Servicio</label>
-          <select id="service" v-model="formData.service" required>
-            <option value="">Selecciona un servicio</option>
-            <option value="registros">Registros Akáshicos</option>
-            <option value="tarot">Tarot</option>
-            <option value="limpieza">Limpieza Energética</option>
-            <option value="reiki">Reiki</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Mensaje</label>
-          <textarea id="message" v-model="formData.message" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Enviar</button>
-      </form>
+
+      <div v-if="status === 'idle'">
+        <h2>Contacto</h2>
+        <form @submit.prevent="handleSubmit">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" v-model="formData.name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" v-model="formData.email" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Servicio</label>
+            <select id="service" v-model="formData.service" required>
+              <option value="">Selecciona un servicio</option>
+              <option value="registros">Registros Akáshicos</option>
+              <option value="tarot">Tarot</option>
+              <option value="limpieza">Limpieza Energética</option>
+              <option value="reiki">Reiki</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" v-model="formData.message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" :disabled="sending">
+            {{ sending ? 'Enviando...' : 'Enviar' }}
+          </button>
+        </form>
+      </div>
+
+      <div v-else-if="status === 'success'" class="feedback success">
+        <span class="feedback-icon">✓</span>
+        <h2>¡Mensaje enviado!</h2>
+        <p>Gracias por contactarnos. Te responderemos a la brevedad.</p>
+        <button class="submit-btn" @click="close">Cerrar</button>
+      </div>
+
+      <div v-else-if="status === 'error'" class="feedback error">
+        <span class="feedback-icon">✗</span>
+        <h2>Error al enviar</h2>
+        <p>{{ errorMsg }}</p>
+        <button class="submit-btn" @click="status = 'idle'">Intentar de nuevo</button>
+      </div>
     </div>
   </div>
 </template>
@@ -43,22 +62,41 @@ export default {
   },
   data() {
     return {
-      formData: {
-        name: '',
-        email: '',
-        service: '',
-        message: ''
-      }
+      formData: { name: '', email: '', service: '', message: '' },
+      status: 'idle', // idle | loading | success | error
+      errorMsg: ''
+    }
+  },
+  computed: {
+    sending() {
+      return this.status === 'loading'
     }
   },
   methods: {
     close() {
-      this.$emit('close');
+      this.reset()
+      this.$emit('close')
     },
-    handleSubmit() {
-      // Aquí implementar la lógica de envío del formulario
-      console.log('Formulario enviado:', this.formData);
-      this.close();
+    reset() {
+      this.formData = { name: '', email: '', service: '', message: '' }
+      this.status = 'idle'
+      this.errorMsg = ''
+    },
+    async handleSubmit() {
+      this.status = 'loading'
+      try {
+        // Configurar aquí el endpoint real (EmailJS, Formspree, etc.)
+        const response = await fetch('https://formspree.io/f/xxxxx', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.formData)
+        })
+        if (!response.ok) throw new Error('Error en el servidor')
+        this.status = 'success'
+      } catch (e) {
+        this.status = 'error'
+        this.errorMsg = 'No se pudo enviar el mensaje. Verificá tu conexión o intentá más tarde.'
+      }
     }
   }
 }
@@ -79,7 +117,7 @@ export default {
 }
 
 .contact-form {
-  background: white;
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
   width: 100%;
@@ -95,7 +133,7 @@ export default {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #666;
+  color: var(--text-light);
 }
 
 .form-group {
@@ -105,7 +143,7 @@ export default {
 label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-dark);
 }
 
 input, select, textarea {
@@ -122,11 +160,11 @@ textarea {
 }
 
 .submit-btn {
-  background: #7e57c2;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
@@ -134,6 +172,35 @@ textarea {
 }
 
 .submit-btn:hover {
-  background: #5e35b1;
+  background: var(--primary-dark);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.feedback {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.feedback-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.feedback.success .feedback-icon { color: #4caf50; }
+.feedback.error .feedback-icon { color: #e53935; }
+
+.feedback h2 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-deep);
+}
+
+.feedback p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
 }
 </style>

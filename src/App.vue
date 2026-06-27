@@ -31,12 +31,42 @@ export default {
     return {
       showContact: false
     }
+  },
+  provide() {
+    return {
+      openContact: this.openContact
+    }
+  },
+  methods: {
+    openContact() {
+      this.showContact = true
+    }
   }
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #7e57c2;
+  --primary-dark: #5e35b1;
+  --primary-deep: #2b1055;
+  --primary-light: #f3f0f8;
+  --text-dark: #333;
+  --text-muted: #555;
+  --text-light: #666;
+  --bg-body: #ddd8d0;
+  --bg-card: #e8e4dd;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.1);
+  --shadow-md: 0 10px 20px rgba(0,0,0,0.05);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.05);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
 
 * {
   box-sizing: border-box;
@@ -48,7 +78,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background: #f8f9fa;
+  background: var(--bg-body);
+  color: var(--text-dark);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -61,10 +92,9 @@ body {
 
 .main-container {
   flex: 1;
-  padding-top: 70px; /* Space for fixed navbar */
+  padding-top: 70px;
 }
 
-/* Route transitions */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -75,7 +105,6 @@ body {
   opacity: 0;
 }
 
-/* Global Utility Classes */
 .service-page-container {
   min-height: calc(100vh - 70px);
   padding: 2rem 1rem;
@@ -83,8 +112,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, #2b1055 0%, #7137a7 100%);
-  color: white;
+  background: linear-gradient(135deg, #b2ebf2 0%, #e0f7fa 100%);
+  color: var(--primary-deep);
 }
 </style>
 

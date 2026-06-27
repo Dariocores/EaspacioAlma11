@@ -31,7 +31,7 @@
       <div class="connect-info">
         <h2>¿Qué son los Registros Akáshicos?</h2>
         <p>Es una memoria universal de la existencia, un espacio multidimensional donde se archivan todas las experiencias del alma. Acceder a ellos te brinda guía y sanación profunda.</p>
-        <button class="cta-btn" @click="$emit('open-contact')">Reservar sesión</button>
+        <button class="cta-btn" @click="openContact">Reservar sesión</button>
       </div>
       <div class="connect-icon">
         <span class="icon-book">&#128214;</span>
@@ -50,7 +50,8 @@
 
 <script>
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  inject: ['openContact'],
 };
 </script>
 
@@ -71,7 +72,7 @@ export default {
 .welcome-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #7e57c2;
+  color: var(--primary);
 }
 
 h1 {
@@ -79,12 +80,12 @@ h1 {
   font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.1;
-  color: #2b1055;
+  color: var(--primary-deep);
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-light);
   max-width: 600px;
   margin: 0 auto 3rem auto;
 }
@@ -98,7 +99,7 @@ h1 {
 
 .service-btn {
   text-decoration: none;
-  background: white;
+  background: var(--bg-card);
   border: 1px solid #eee;
   border-radius: 24px;
   padding: 2.5rem 1.5rem;
@@ -109,7 +110,7 @@ h1 {
   align-items: center;
   gap: 1rem;
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  color: #2b1055;
+  color: var(--primary-deep);
 }
 
 .service-btn:hover {
@@ -131,7 +132,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 3rem;
-  background: white;
+  background: var(--bg-card);
   border-radius: 32px;
   padding: 3rem;
   margin: 2rem 1rem;
@@ -144,19 +145,19 @@ h1 {
 
 .connect-info h2 {
   font-size: 2rem;
-  color: #2b1055;
+  color: var(--primary-deep);
   margin-bottom: 1rem;
 }
 
 .connect-info p {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
 .cta-btn {
-  background: #7e57c2;
+  background: var(--primary);
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -169,7 +170,7 @@ h1 {
 }
 
 .cta-btn:hover {
-  background: #5e35b1;
+  background: var(--primary-dark);
   transform: scale(1.05);
 }
 
@@ -183,7 +184,7 @@ h1 {
 }
 
 .philosophy-card {
-  background: #f0ebf7;
+  background: var(--primary-light);
   padding: 3rem;
   border-radius: 32px;
   text-align: center;
@@ -191,13 +192,13 @@ h1 {
 
 .philosophy-card h3 {
   font-size: 1.8rem;
-  color: #2b1055;
+  color: var(--primary-deep);
   margin-bottom: 1rem;
 }
 
 .philosophy-card p {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--text-muted);
   max-width: 800px;
   margin: 0 auto;
 }

@@ -50,9 +50,9 @@ export default {
 
 <style scoped>
 .navbar {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
   padding: 0.5rem 1rem;
   position: fixed;
   top: 0;
@@ -82,7 +82,7 @@ export default {
 .navbar-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #2b1055;
+  color: var(--primary-deep);
   margin: 0;
 }
 
@@ -100,7 +100,7 @@ export default {
 .nav-link {
   text-decoration: none;
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text-muted);
   font-weight: 500;
   transition: all 0.3s ease;
   padding: 0.5rem;
@@ -114,7 +114,7 @@ export default {
   left: 0;
   width: 0;
   height: 2px;
-  background: #7e57c2;
+  background: var(--primary);
   transition: width 0.3s ease;
 }
 
@@ -125,11 +125,11 @@ export default {
 
 .nav-link:hover, 
 .router-link-active {
-  color: #7e57c2;
+  color: var(--primary);
 }
 
 .contact-btn {
-  background: #7e57c2;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 0.6rem 1.4rem;
@@ -141,20 +141,20 @@ export default {
 }
 
 .contact-btn:hover {
-  background: #5e35b1;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(126, 87, 194, 0.3);
 }
 
 .menu-btn {
   display: none;
-  background: #f0f0f0;
+  background: var(--primary-light);
   border: none;
   border-radius: 8px;
   font-size: 1.5rem;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
-  color: #333;
+  color: var(--text-dark);
 }
 
 .mobile-menu {
@@ -162,7 +162,7 @@ export default {
   top: 70px;
   left: 0;
   width: 100%;
-  background: white;
+  background: var(--bg-card);
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -174,7 +174,7 @@ export default {
 
 .mobile-link {
   text-decoration: none;
-  color: #333;
+  color: var(--text-dark);
   padding: 1rem;
   border-radius: 12px;
   font-weight: 500;
@@ -182,8 +182,8 @@ export default {
 }
 
 .mobile-link:hover, .mobile-link.router-link-active {
-  background: #f3f0f8;
-  color: #7e57c2;
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 .contact-btn.mobile {
