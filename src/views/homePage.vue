@@ -76,12 +76,19 @@
         <p>En Espacio Alma 11, creemos que cada ser posee la capacidad innata de sanar. Nuestro propósito es acompañarte en ese proceso de recordar quién eres realmente.</p>
       </div>
     </div>
+
+    <TestimonialsSection />
+    <GallerySection />
   </div>
 </template>
 
 <script>
+import TestimonialsSection from '@/components/TestimonialsSection.vue'
+import GallerySection from '@/components/GallerySection.vue'
+
 export default {
   name: 'HomePage',
+  components: { TestimonialsSection, GallerySection },
   inject: ['openContact'],
 };
 </script>
